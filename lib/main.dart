@@ -14,6 +14,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Firebase Login',
+      theme: ThemeData(
+        primaryColor: Colors.deepOrangeAccent,
+      ),
       home: LoginPage(),
     );
   }

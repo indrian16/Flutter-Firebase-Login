@@ -42,7 +42,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - logo-built_white.png
+    - logo-standard.png
+    - icons8-google-50.png
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 
@@ -57,7 +58,18 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
+  fonts:
+    - family: Arimo
+      fonts:
+        - asset: assets/fonts/Arimo-Regular.ttf
+
+    - family: Arimo-Bold
+      fonts:
+        - asset: assets/fonts/Arimo-Bold.ttf
+
+    - family: CustomIcon
+      fonts:
+        - asset: assets/fonts/CustomIcon.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
