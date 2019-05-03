@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './login.dart';
+import 'package:login_firebase/register/register.dart';
 import 'package:login_firebase/custom_icon_icons.dart';
 
 class LoginPage extends StatefulWidget {
@@ -55,7 +56,12 @@ class _LoginPageState extends State<LoginPage> {
                   child: SizedBox(
                     width: double.infinity,
                     child: FlatButton(
-                      onPressed: () {},
+                      onPressed: () {
+
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => RegisterPage())
+                        );
+                      },
                       child: Text(
                         'Create an account',
                         style: TextStyle(
