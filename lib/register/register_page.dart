@@ -24,16 +24,12 @@ class _RegisterPageState extends State<RegisterPage> {
                 children: <Widget>[
                   TextField(
                     decoration: InputDecoration(
-                      labelText: 'Email',
-                      icon: Icon(Icons.email)
-                    ),
+                        labelText: 'Email', icon: Icon(Icons.email)),
                     cursorColor: Theme.of(context).primaryColor,
                   ),
                   TextField(
                     decoration: InputDecoration(
-                      labelText: 'Password',
-                      icon: Icon(Icons.security)
-                    ),
+                        labelText: 'Password', icon: Icon(Icons.security)),
                     obscureText: true,
                     cursorColor: Theme.of(context).primaryColor,
                   ),
@@ -42,9 +38,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     color: Colors.deepOrangeAccent,
                     child: Text(
                       'Create now',
-                      style: TextStyle(
-                        color: Colors.white
-                      ),
+                      style: TextStyle(color: Colors.white),
                     ),
                   )
                 ],
