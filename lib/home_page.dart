@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:login_firebase/authentication/bloc.dart';
 
 class HomePage extends StatelessWidget {
   final String _displayName;
@@ -15,7 +18,10 @@ class HomePage extends StatelessWidget {
         title: Text('Home Page', style: TextStyle(fontFamily: 'Arimo-Bold')),
         actions: <Widget>[
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+
+              BlocProvider.of<AuthenticationBloc>(context).dispatch(LoggedOut());
+            },
             icon: Icon(Icons.exit_to_app, color: Colors.white),
           )
         ],

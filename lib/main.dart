@@ -35,24 +35,29 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Login Firebase',
-      theme: ThemeData(primaryColor: Colors.deepOrangeAccent),
-      home: BlocBuilder(
-        bloc: _authenticationBloc,
-        builder: (_, AuthenticationState state) {
-          if (state is Uninitilized) {
-            return SplashScreen();
-          }
+    return BlocProvider(
+      bloc: _authenticationBloc,
+      child: MaterialApp(
+        title: 'Login Firebase',
+        theme: ThemeData(primaryColor: Colors.deepOrangeAccent),
+        home: BlocBuilder(
+          bloc: _authenticationBloc,
+          builder: (_, AuthenticationState state) {
+            if (state is Uninitilized) {
+              return SplashScreen();
+            }
 
-          if (state is Authenticated) {
-            return HomePage(displayName: state.displayEmail);
-          }
+            if (state is Authenticated) {
+              return HomePage(displayName: state.displayEmail);
+            }
 
-          if (state is Unauthenticated) {
-            return LoginPage();
-          }
-        },
+            if (state is Unauthenticated) {
+              return LoginPage(
+                userRepo: _userRepository,
+              );
+            }
+          },
+        ),
       ),
     );
   }
