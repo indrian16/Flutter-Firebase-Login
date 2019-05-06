@@ -117,6 +117,11 @@ class _LoginPageState extends State<LoginPage> {
         ));
     }
 
+    if (state.isSubmitting) {
+
+      FocusScope.of(context).requestFocus(new FocusNode());
+    }
+
     if (state.isSuccess) {
       
       BlocProvider.of<AuthenticationBloc>(context).dispatch(LoggedIn());
@@ -162,7 +167,9 @@ class _LoginPageState extends State<LoginPage> {
                   child: FlatButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => RegisterPage()));
+                          builder: (context) => RegisterPage(
+                            userRepository: _userRepository,
+                          )));
                     },
                     child: Text(
                       'Create an account',
