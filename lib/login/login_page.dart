@@ -70,6 +70,7 @@ class _LoginPageState extends State<LoginPage> {
       _scaffoldKey.currentState
         ..hideCurrentSnackBar()
         ..showSnackBar(SnackBar(
+          duration: Duration(minutes: 5),
           backgroundColor: Colors.black,
           content: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
