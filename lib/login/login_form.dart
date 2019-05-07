@@ -1,9 +1,20 @@
+import 'package:meta/meta.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import './bloc/bloc.dart';
 
+import 'package:login_firebase/user_repository.dart';
+import 'package:login_firebase/forgot_password/forgot_password.dart';
+
 class LoginForm extends StatefulWidget {
+
+  final UserRepository userRepository;
+
+  const LoginForm({Key key, @required this.userRepository})
+          : assert(userRepository != null),
+            super(key: key);
+
   @override
   _LoginFormState createState() => _LoginFormState();
 }
@@ -119,7 +130,16 @@ class _LoginFormState extends State<LoginForm> {
                       ),
                       SizedBox(height: 16.0),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => ForgotPasswordPage(
+                                userRepository: widget.userRepository,
+                              )
+                            )
+                          );
+                        },
                         child: Text(
                           'Forgot password?',
                           style: TextStyle(

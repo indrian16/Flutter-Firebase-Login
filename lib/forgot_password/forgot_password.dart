@@ -1,0 +1,1 @@
+export './forgot_pwd_page.dart';

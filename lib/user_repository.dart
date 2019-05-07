@@ -53,6 +53,11 @@ class UserRepository {
     return (await _firebaseAuth.currentUser()).email;
   }
 
+  Future<void> requestResetPassword({@required String email}) async {
+
+    return await _firebaseAuth.sendPasswordResetEmail(email: email);
+  }
+
   Future<void> signOut() async {
 
     return Future.wait([

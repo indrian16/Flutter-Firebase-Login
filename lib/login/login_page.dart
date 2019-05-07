@@ -142,7 +142,7 @@ class _LoginPageState extends State<LoginPage> {
                   width: 280,
                 ),
               ),
-              LoginForm(),
+              LoginForm(userRepository: _userRepository),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 24.0),
                 child: Row(
