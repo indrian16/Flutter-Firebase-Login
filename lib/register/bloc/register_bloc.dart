@@ -65,7 +65,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     String password
   ) async* {
 
-    yield RegisterState.empty();
+    yield RegisterState.loading();
 
     try {
       

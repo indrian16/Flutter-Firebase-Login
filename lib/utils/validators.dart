@@ -11,6 +11,6 @@ class Validators {
 
   static isPasswordValid(String password) {
 
-    return password.length > 3;
+    return password.length >= 6;
   }
 }

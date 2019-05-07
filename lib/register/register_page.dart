@@ -27,22 +27,22 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  bool isPopulated() {
+  bool _isPopulated() {
 
     return _emailController.text.isNotEmpty && _passwordController.text.isNotEmpty;
   }
 
-  bool isEnabledCreateButton(RegisterState state) {
+  bool _isEnabledCreateButton(RegisterState state) {
 
-    return state.isFormValid && isPopulated() && !state.isSubmitting;
+    return state.isFormValid && _isPopulated() && !state.isSubmitting;
   }
 
   @override
   void initState() {
     super.initState();
     _registerBloc = RegisterBloc(userRepository: _userRepository);
-    _emailController.addListener(onEmailChanged);
-    _passwordController.addListener(onPasswordChanged);
+    _emailController.addListener(_onEmailChanged);
+    _passwordController.addListener(_onPasswordChanged);
   }
 
   @override
@@ -98,7 +98,7 @@ class _RegisterPageState extends State<RegisterPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                'Login Failure',
+                'Create account has been Failure',
                 style: TextStyle(
                     fontFamily: 'Arimo',
                     fontSize: 16.0,
@@ -141,6 +141,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 decoration: InputDecoration(
                     labelText: 'Email', icon: Icon(Icons.email)),
                 cursorColor: Theme.of(context).primaryColor,
+                autovalidate: true,
                 autocorrect: true,
                 autofocus: true,
                 validator: (_) {
@@ -157,7 +158,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 obscureText: true,
                 cursorColor: Theme.of(context).primaryColor,
                 autocorrect: true,
-                autofocus: true,
+                autovalidate: true,
                 validator: (_) {
 
                   return !state.isPasswordValid
@@ -166,7 +167,12 @@ class _RegisterPageState extends State<RegisterPage> {
                 },
               ),
               MaterialButton(
-                onPressed: _onSubmitted,
+                onPressed: () {
+                  
+                  return _isEnabledCreateButton(state)
+                            ? _onSubmitted()
+                            : print('disabled');
+                },
                 color: Colors.deepOrangeAccent,
                 child: Text(
                   'Create now',
@@ -180,11 +186,11 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  void onEmailChanged() {
+  void _onEmailChanged() {
     _registerBloc.dispatch(EmailChanged(email: _emailController.text));
   }
 
-  void onPasswordChanged() {
+  void _onPasswordChanged() {
     _registerBloc.dispatch(PasswordChanged(password: _passwordController.text));
   }
 
