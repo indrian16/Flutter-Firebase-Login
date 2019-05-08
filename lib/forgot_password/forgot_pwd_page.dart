@@ -22,10 +22,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final _emailController = TextEditingController();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  bool _isEnabledResetButtn(ForgotpasswordState state) {
-    return state.isEmailValid ??
-        _emailController.text.isNotEmpty ??
-        !state.isSubmitting;
+  bool _isEnabledResetButton(ForgotpasswordState state) {
+    return state.isEmailValid && _emailController.text.isNotEmpty && !state.isSubmitting;
   }
 
   @override
@@ -177,7 +175,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             SizedBox(height: 6.0),
             MaterialButton(
               onPressed: () {
-                _isEnabledResetButtn(state)
+                _isEnabledResetButton(state)
                     ? _onResetEmail()
                     : print('disabled');
               },
