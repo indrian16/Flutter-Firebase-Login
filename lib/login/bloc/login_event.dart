@@ -47,8 +47,8 @@ class LoginWithGooglePressed extends LoginEvent {
   String toString() => 'LoginWithGooglePressed';
 }
 
-class TestEvent extends LoginEvent {
+class LoginWithFacebookPressed extends LoginEvent {
 
   @override
-  String toString() => 'TestEvent';
+  String toString() => 'LoginWithFacebookPressed';
 }

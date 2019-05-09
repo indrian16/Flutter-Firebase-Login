@@ -207,7 +207,10 @@ class FacebookButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RaisedButton.icon(
-      onPressed: () {},
+      onPressed: () {
+
+        BlocProvider.of<LoginBloc>(context).dispatch(LoginWithFacebookPressed());
+      },
       icon: Icon(CustomIcon.facebook__1_, color: Colors.white, size: 18),
       color: Colors.blueAccent,
       label: Text(
