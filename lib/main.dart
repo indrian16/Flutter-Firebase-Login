@@ -30,7 +30,10 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     _authenticationBloc = AuthenticationBloc(userRepository: _userRepository);
 
-    _authenticationBloc.dispatch(AppStarted());
+    Future.delayed(const Duration(milliseconds: 500), () {
+
+      _authenticationBloc.dispatch(AppStarted());
+    });
   }
 
   @override
